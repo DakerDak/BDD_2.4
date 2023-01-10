@@ -31,19 +31,18 @@ public class MoneyTransferTest {
 
         var cardNumber = getSecondCardBank();
         int amount = 3500;
-        int expectedFirstCardBalance = DashboardPage.getFirstCardBalance();
-        int expectedSecondCardBalance = DashboardPage.getSecondCardBalance();
-
         var dashboardPage = new DashboardPage();
+        int expectedFirstCardBalance = dashboardPage.getFirstCardBalance();
+        int expectedSecondCardBalance = dashboardPage.getSecondCardBalance();
 
-        var TranslationPage = new TranslationPage();
+        var translationPage = new TranslationPage();
         dashboardPage.transferFirstCardBalance();
-        TranslationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
+        translationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
 
         int expectedNewSecondCardBalance = expectedSecondCardBalance - amount;
         int expectedNewFirstCardBalance = expectedFirstCardBalance + amount;
-        int actualFirstCardBalance = DashboardPage.getFirstCardBalance();
-        int actualSecondCardBalance = DashboardPage.getSecondCardBalance();
+        int actualFirstCardBalance = dashboardPage.getFirstCardBalance();
+        int actualSecondCardBalance = dashboardPage.getSecondCardBalance();
         Assertions.assertEquals(expectedNewFirstCardBalance, actualFirstCardBalance);
         Assertions.assertEquals(expectedNewSecondCardBalance, actualSecondCardBalance);
     }
@@ -54,19 +53,18 @@ public class MoneyTransferTest {
 
         var cardNumber = getFirstCardBank();
         int amount = 8000;
-        int expectedFirstCardBalance = DashboardPage.getFirstCardBalance();
-        int expectedSecondCardBalance = DashboardPage.getSecondCardBalance();
         var dashboardPage = new DashboardPage();
+        int expectedFirstCardBalance = dashboardPage.getFirstCardBalance();
+        int expectedSecondCardBalance = dashboardPage.getSecondCardBalance();
 
-        var TranslationPage = new TranslationPage();
+        var translationPage = new TranslationPage();
         dashboardPage.transferSecondCardBalance();
-        TranslationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
-
+        translationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
 
         int expectedNewSecondCardBalance = expectedSecondCardBalance + amount;
         int expectedNewFirstCardBalance = expectedFirstCardBalance - amount;
-        int actualFirstCardBalance = DashboardPage.getFirstCardBalance();
-        int actualSecondCardBalance = DashboardPage.getSecondCardBalance();
+        int actualFirstCardBalance = dashboardPage.getFirstCardBalance();
+        int actualSecondCardBalance = dashboardPage.getSecondCardBalance();
         Assertions.assertEquals(expectedNewFirstCardBalance, actualFirstCardBalance);
         Assertions.assertEquals(expectedNewSecondCardBalance, actualSecondCardBalance);
     }
