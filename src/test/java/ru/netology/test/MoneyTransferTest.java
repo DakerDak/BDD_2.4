@@ -34,9 +34,9 @@ public class MoneyTransferTest {
         var dashboardPage = new DashboardPage();
         int expectedFirstCardBalance = dashboardPage.getFirstCardBalance();
         int expectedSecondCardBalance = dashboardPage.getSecondCardBalance();
+        dashboardPage.transferFirstCardBalance();
 
         var translationPage = new TranslationPage();
-        dashboardPage.transferFirstCardBalance();
         translationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
 
         int expectedNewSecondCardBalance = expectedSecondCardBalance - amount;
@@ -56,9 +56,9 @@ public class MoneyTransferTest {
         var dashboardPage = new DashboardPage();
         int expectedFirstCardBalance = dashboardPage.getFirstCardBalance();
         int expectedSecondCardBalance = dashboardPage.getSecondCardBalance();
+        dashboardPage.transferSecondCardBalance();
 
         var translationPage = new TranslationPage();
-        dashboardPage.transferSecondCardBalance();
         translationPage.replenishmentCard(String.valueOf(cardNumber), String.valueOf(amount));
 
         int expectedNewSecondCardBalance = expectedSecondCardBalance + amount;
